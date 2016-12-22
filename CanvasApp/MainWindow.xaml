@@ -1,0 +1,40 @@
+﻿<Window x:Class="CanvasApp.MainWindow"        
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CanvasApp"
+        xmlns:controls="clr-namespace:CanvasApp.Controls"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1000"
+        WindowState="Maximized"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto">
+    
+    <materialDesign:DialogHost Identifier="RootDialog">
+        <materialDesign:DrawerHost>
+            <DockPanel DockPanel.Dock="Top">
+                <materialDesign:ColorZone Padding="16"
+                                          materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                          Mode="PrimaryMid"
+                                          DockPanel.Dock="Top">
+                </materialDesign:ColorZone>
+
+                <controls:CanvasControl Margin="16" Background="{DynamicResource PrimaryHueLightBrush}">
+                    <Image IsHitTestVisible="False"
+                           Stretch="Uniform"
+                           Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorType=Canvas}}"
+                           Height="{Binding Path=ActualHeight, RelativeSource={RelativeSource AncestorType=Canvas}}">
+                        <Image.Source>
+                            <BitmapImage UriSource="Resources/Images/test.jpg"/>
+                        </Image.Source>
+                    </Image>
+                </controls:CanvasControl>
+            </DockPanel>
+        </materialDesign:DrawerHost>
+    </materialDesign:DialogHost>
+</Window>
