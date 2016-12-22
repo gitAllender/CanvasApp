@@ -28,11 +28,8 @@
                     <Image IsHitTestVisible="False"
                            Stretch="Uniform"
                            Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorType=Canvas}}"
-                           Height="{Binding Path=ActualHeight, RelativeSource={RelativeSource AncestorType=Canvas}}">
-                        <Image.Source>
-                            <BitmapImage UriSource="Resources/Images/test.jpg"/>
-                        </Image.Source>
-                    </Image>
+                           Height="{Binding Path=ActualHeight, RelativeSource={RelativeSource AncestorType=Canvas}}"
+                           Source="{Binding SketcherBackground}"/>
                 </controls:CanvasControl>
             </DockPanel>
         </materialDesign:DrawerHost>
