@@ -20,21 +20,16 @@ namespace CanvasApp
             base.OnStartup(e);
 
             var aMainWindow = new MainWindow();
+            var aMainController = new MainWindowController();
 
             var aMainViewModel = new MainWindowViewModel();
+            aMainViewModel.InstallViewController(aMainController);
 
             aMainViewModel.SketcherBackground = new BitmapImage(new Uri("/Resources/Images/test.jpg", UriKind.Relative));
             aMainViewModel.SketcherBackground.CacheOption = BitmapCacheOption.None;
 
             aMainWindow.DataContext = aMainViewModel;
             aMainWindow.Show();
-        }
-
-        protected override void OnLoadCompleted(NavigationEventArgs e)
-        {
-            base.OnLoadCompleted(e);
-
-            
         }
     }
 }
