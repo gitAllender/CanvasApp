@@ -19,8 +19,10 @@ namespace CanvasApp
             MenuCommands = new ObservableCollection<CommandDescriptor>(theController.GetMenuCommands());
 
             Colors = new ObservableCollection<ColorDescription>(theController.GetColors());
+            SelectedColor = Colors.First();
 
             LineWidths = new ObservableCollection<LineWidthDescription>(theController.GetLineDescriptions());
+            SelectedLineWidth = LineWidths.First();
         }
 
         private BitmapImage m_SketcherBackground;
@@ -99,6 +101,22 @@ namespace CanvasApp
                 m_Colors = value;
                 RaisePropertyChanged();
             }
+        }
+
+        private ColorDescription m_SelectedColor;
+
+        public ColorDescription SelectedColor
+        {
+            get { return m_SelectedColor; }
+            set { m_SelectedColor = value;  RaisePropertyChanged(); }
+        }
+
+        private LineWidthDescription m_SelectedLineWidth;
+
+        public LineWidthDescription SelectedLineWidth
+        {
+            get { return m_SelectedLineWidth; }
+            set { m_SelectedLineWidth = value; RaisePropertyChanged(); }
         }
 
         private ObservableCollection<CommandDescriptor> m_MenuCommands;

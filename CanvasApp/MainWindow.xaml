@@ -37,7 +37,8 @@
                             Background="{DynamicResource PrimaryHueLightBrush}"
                             DockPanel.Dock="Right"
                             Width="200">
-                    <ListBox Style="{StaticResource MaterialDesignToolToggleListBox}">
+                    <ListBox Style="{StaticResource MaterialDesignToolToggleListBox}"
+                             SelectedIndex="0">
                         <ListBoxItem>
                             <materialDesign:PackIcon Kind="Pencil" />
                         </ListBoxItem>
@@ -50,7 +51,8 @@
                     </ListBox>
 
                     <ComboBox HorizontalAlignment="Left" Width="150" Margin="0 32 0 0"
-                              ItemsSource="{Binding Colors}">
+                              ItemsSource="{Binding Colors}"
+                              SelectedItem="{Binding SelectedColor}">
                         <ComboBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <VirtualizingStackPanel />
@@ -76,7 +78,8 @@
                     </ComboBox>
 
                     <ComboBox HorizontalAlignment="Left" Width="150" Margin="0 32 0 0"
-                              ItemsSource="{Binding LineWidths}">
+                              ItemsSource="{Binding LineWidths}"
+                              SelectedItem="{Binding SelectedLineWidth}">
                         <ComboBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <VirtualizingStackPanel />
@@ -98,7 +101,10 @@
 
                 </StackPanel>
 
-                <controls:CanvasControl Margin="16" Background="{DynamicResource PrimaryHueLightBrush}">
+                <controls:CanvasControl Margin="16" 
+                                        Background="{DynamicResource PrimaryHueLightBrush}"
+                                        PenWidth="{Binding SelectedLineWidth.Width}"
+                                        PenColor="{Binding SelectedColor.Color}">
                     <Image IsHitTestVisible="False"
                            Stretch="Uniform"
                            Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorType=Canvas}}"

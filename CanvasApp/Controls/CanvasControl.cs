@@ -8,13 +8,33 @@ namespace CanvasApp.Controls
 {
     public class CanvasControl: Canvas
     {
+        public int PenWidth
+        {
+            get { return (int)GetValue(PenWidthProperty); }
+            set { SetValue(PenWidthProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for LineWidth.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty PenWidthProperty =
+            DependencyProperty.Register("PenWidth", typeof(int), typeof(CanvasControl), new PropertyMetadata(1));
+
+        public Color PenColor
+        {
+            get { return (Color)GetValue(PenColorProperty); }
+            set { SetValue(PenColorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for PenColor.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty PenColorProperty =
+            DependencyProperty.Register("PenColor", typeof(Color), typeof(CanvasControl), new PropertyMetadata(Colors.Black));
+        
         private Polyline PaintedPath { get; set; }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             PaintedPath = new Polyline();
-            PaintedPath.Stroke = Brushes.Black;
-            PaintedPath.StrokeThickness = 1;
+            PaintedPath.Stroke = new SolidColorBrush(PenColor);
+            PaintedPath.StrokeThickness = PenWidth;
             Children.Add(PaintedPath);
         }
 
